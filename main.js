@@ -19,6 +19,7 @@ class Comment {
 
 
 
+
 function videoPlay(id) {
   const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
   console.log("Se está reproduciendo desde la url " + urlSecreta);
@@ -147,6 +148,14 @@ class Student {
     this.approvedCourses = approvedCourses;
     this.learningPaths = learningPaths;
   }
+
+  publicarComentario(commentContent) {
+    const comment = new Comment({
+      content: commentContent,
+      studentName: this.name,
+    });
+    comment.publicar();
+  }
 }
 
 class FreeStudent extends Student {
@@ -187,6 +196,25 @@ class ExpertStudent extends Student {
   }
 }
 
+class TeacherStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+
+  approveCourse(newCourse) {
+    this.approvedCourses.push(newCourse);
+  }
+
+  publicarComentario(commentContent) {
+    const comment = new Comment({
+      content: commentContent,
+      studentName: this.name,
+      studentRole: "profesor",
+    });
+    comment.publicar();
+  }
+}
+
 
 
 const juan = new FreeStudent({
@@ -209,4 +237,11 @@ const miguelito = new BasicStudent({
     escuelaWeb,
     escuelaData,
   ],
+});
+
+const freddy = new TeacherStudent({
+  name: "Freddy Vega",
+  username: "freddier",
+  email: "f@gep.com",
+  instagram: "freddiervega",
 });
