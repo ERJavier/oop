@@ -27,3 +27,28 @@ students.prototype.approveClass = function(approved) {
 const juana = new students(
     "juana", 19,["videogame", "css"]
 )
+
+// ============CLASS============= 
+
+class Student2 {
+    constructor({
+        name, age, approvedClass =[], email
+    }){
+        this.name = name;
+        this.age = age;
+        this.approvedClass = approvedClass;
+    }
+
+    approveClass(approved){
+        this.approvedClass.push(approved)
+    }
+}
+
+const miguel = new Student2({   
+    email: "migue@gogo.com",
+    name: "miguel",
+    age: 35,
+    approvedClass: [
+        "data", "css", "html"
+    ]
+})
