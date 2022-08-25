@@ -1,8 +1,8 @@
-function videoPlay(id) {
+const videoPlay=(id)=> {
   const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
   console.log("Se está reproduciendo desde la url " + urlSecreta);
 }
-function videoStop(id) {
+const videoStop=(id) => {
   const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
   console.log("Pausamos la url " + urlSecreta);
 }
