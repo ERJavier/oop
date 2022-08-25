@@ -1,54 +1,103 @@
-// const nat = {
-//     name: "nat",
-//     age: 20,
-//     approvedClass: [
-//         "html",
-//         "css"
-//     ],
-//     approveClass(approved){
-
-//         // make nat approve more
-//         this.approvedClass.push(approved);
-//     }, 
-
-// };
-
-const students = (name, age, approvedClass) => {
+class Course {
+  constructor({
+    name,
+    classes = [],
+  }) {
     this.name = name;
-    this.age = age;
-    this.approvedClass = approvedClass;
-
+    this.classes = classes;
+  }
 }
 
-students.prototype.approveClass = function(approved) {
-    this.approvedClass.push(approved)
+const cursoProgBasica = new Course({
+  name: "Curso Gratis de Programación Básica",
+});
+const cursoDefinitivoHTML = new Course({
+  name: "Curso Definitivo de HTML y CSS",
+});
+const cursoPracticoHTML = new Course({
+  name: "Curso Practico de HTML y CSS",
+});
+
+
+class LearningPath {
+  constructor({
+    name,
+    courses = [],
+  }) {
+    this.name = name;
+    this.courses = courses;
+  }
 }
 
-const juana = new students(
-    "juana", 19,["videogame", "css"]
-)
+const escuelaWeb = new LearningPath({
+  name: "Escuela de Desarrollo Web",
+  courses: [
+    cursoProgBasica,
+    cursoDefinitivoHTML,
+    cursoPracticoHTML,
+  ],
+});
 
-// ============CLASS============= 
+const escuelaData = new LearningPath({
+  name: "Escuela de Data Science",
+  courses: [
+    cursoProgBasica,
+    "Curso DataBusiness",
+    "Curso Dataviz",
+  ],
+});
 
-class Student2 {
-    constructor({
-        name, age, approvedClass =[], email
-    }){
-        this.name = name;
-        this.age = age;
-        this.approvedClass = approvedClass;
-    }
-
-    approveClass(approved){
-        this.approvedClass.push(approved)
-    }
-}
-
-const miguel = new Student2({   
-    email: "migue@gogo.com",
-    name: "miguel",
-    age: 35,
-    approvedClass: [
-        "data", "css", "html"
-    ]
+const escuelaVgs = new LearningPath({
+  name: "Escuela de Vidweojuegos",
+  courses: [
+    cursoProgBasica,
+    "Curso de Unity",
+    "Curso de Unreal",
+  ],
 })
+
+class Student {
+  constructor({
+    name,
+    email,
+    username,
+    twitter = undefined,
+    instagram = undefined,
+    facebook = undefined,
+    approvedCourses = [],
+    learningPaths = [],
+  }) {
+    this.name = name;
+    this.email = email;
+    this.username = username;
+    this.socialMedia = {
+      twitter,
+      instagram,
+      facebook,
+    };
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
+}
+
+const juan2 = new Student({
+  name: "JuanDC",
+  username: "juandc",
+  email: "juanito@juanito.com",
+  twitter: "fjuandc",
+  learningPaths: [
+    escuelaWeb,
+    escuelaVgs,
+  ],
+});
+
+const miguelito2 = new Student({
+  name: "Miguelito",
+  username: "migelitofeliz",
+  email: "miguelito@juanito.com",
+  instagram: "migelito_feliz",
+  learningPaths: [
+    escuelaWeb,
+    escuelaData,
+  ],
+});
